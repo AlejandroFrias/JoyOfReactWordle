@@ -16,10 +16,7 @@ function Game() {
   function handleAddGuess(guess) {
     setGuessResults([
       ...guessResults,
-      {
-        label: guess,
-        id: Math.random(),
-      }
+      guess
     ]);
   }
 
