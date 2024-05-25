@@ -4,6 +4,7 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import GuessInput from '../GuessInput/GuessInput';
 import GuessResults from '../GuessResults/GuessResults';
+import { checkGuess } from '../../game-helpers'
 
 // Pick a random word on every page load.
 const answer = sample(WORDS);
@@ -16,7 +17,7 @@ function Game() {
   function handleAddGuess(guess) {
     setGuessResults([
       ...guessResults,
-      guess
+      checkGuess(guess, answer)
     ]);
   }
 
