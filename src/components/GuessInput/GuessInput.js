@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({ handleAddGuess }) {
+function GuessInput({ handleAddGuess, disabled }) {
   const [guess, setGuess] = React.useState('');
 
   function handleSubmit(event) {
@@ -21,6 +21,7 @@ function GuessInput({ handleAddGuess }) {
       <input
         id="guess-input"
         type="text"
+        disabled={disabled}
         // Validation
         required
         pattern="[A-Z]{5}"

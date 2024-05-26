@@ -3,10 +3,7 @@ import { range } from '../../utils';
 import { checkGuess } from '../../game-helpers';
 
 function Cell({ letter, status }) {
-  let className = 'cell'
-  if (status) {
-    className = `cell ${status}`
-  }
+  const className = status ? `cell ${status}` : 'cell';
   return (
     <span className={className}>
       {letter}

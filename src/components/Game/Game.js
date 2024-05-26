@@ -2,10 +2,12 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+
 import GuessInput from '../GuessInput/GuessInput';
 import GuessResults from '../GuessResults/GuessResults';
-import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
-import EndGameBanner from '../EndGameBanner/EndGameBanner';
+import LostBanner from '../LostBanner/LostBanner';
+import WonBanner from '../WonBanner/WonBanner';
 
 // Pick a random word on every page load.
 const answer = sample(WORDS);
@@ -22,11 +24,26 @@ function Game() {
     ]);
   }
 
+  let gameStatus = 'running'
+  if (
+    guessResults.find((guess) => guess === answer)
+  ) {
+    gameStatus = 'won'
+  } else if (guessResults.length === NUM_OF_GUESSES_ALLOWED) {
+    gameStatus = 'lost'
+  }
 
   return <>
-    <EndGameBanner guessResults={guessResults} answer={answer} />
-    <GuessResults guessResults={guessResults} answer={answer} />
-    <GuessInput handleAddGuess={handleAddGuess} />
+    <GuessResults
+      guessResults={guessResults}
+      answer={answer}
+    />
+    <GuessInput
+      handleAddGuess={handleAddGuess}
+      disabled={gameStatus !== 'running'}
+    />
+    {gameStatus === 'lost' && <LostBanner answer={answer} />}
+    {gameStatus === 'won' && <WonBanner numOfGuesses={guessResults.length} />}
   </>;
 }
 
