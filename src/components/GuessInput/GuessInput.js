@@ -1,12 +1,17 @@
 import React from 'react';
+import { WORDS } from '../../data';
 
 function GuessInput({ handleAddGuess, disabled }) {
   const [guess, setGuess] = React.useState('');
 
   function handleSubmit(event) {
     event.preventDefault()
-    handleAddGuess(guess)
-    setGuess('')
+    if (WORDS.find((word) => guess === word)) {
+      handleAddGuess(guess)
+      setGuess('')
+    } else {
+      window.alert(`${guess} is not a valid word. Please try again.`)
+    }
   }
 
   return (
