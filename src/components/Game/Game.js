@@ -43,7 +43,7 @@ function Game() {
       handleAddGuess={handleAddGuess}
       disabled={gameStatus !== 'running'}
     />
-    <Keyboard />
+    <Keyboard guessResults={guessResults} answer={answer} />
     {gameStatus === 'lost' && <LostBanner answer={answer} />}
     {gameStatus === 'won' && <WonBanner numOfGuesses={guessResults.length} />}
   </>;
