@@ -8,6 +8,7 @@ import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import LostBanner from '../LostBanner';
 import WonBanner from '../WonBanner';
+import Keyboard from '../Keyboard';
 
 // Pick a random word on every page load.
 const answer = sample(WORDS);
@@ -42,6 +43,7 @@ function Game() {
       handleAddGuess={handleAddGuess}
       disabled={gameStatus !== 'running'}
     />
+    <Keyboard />
     {gameStatus === 'lost' && <LostBanner answer={answer} />}
     {gameStatus === 'won' && <WonBanner numOfGuesses={guessResults.length} />}
   </>;
