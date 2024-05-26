@@ -4,6 +4,8 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import GuessInput from '../GuessInput/GuessInput';
 import GuessResults from '../GuessResults/GuessResults';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import EndGameBanner from '../EndGameBanner/EndGameBanner';
 
 // Pick a random word on every page load.
 const answer = sample(WORDS);
@@ -20,7 +22,9 @@ function Game() {
     ]);
   }
 
+
   return <>
+    <EndGameBanner guessResults={guessResults} answer={answer} />
     <GuessResults guessResults={guessResults} answer={answer} />
     <GuessInput handleAddGuess={handleAddGuess} />
   </>;
