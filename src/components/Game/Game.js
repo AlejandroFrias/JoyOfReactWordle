@@ -4,10 +4,10 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
-import GuessInput from '../GuessInput/GuessInput';
-import GuessResults from '../GuessResults/GuessResults';
-import LostBanner from '../LostBanner/LostBanner';
-import WonBanner from '../WonBanner/WonBanner';
+import GuessInput from '../GuessInput';
+import GuessResults from '../GuessResults';
+import LostBanner from '../LostBanner';
+import WonBanner from '../WonBanner';
 
 // Pick a random word on every page load.
 const answer = sample(WORDS);
